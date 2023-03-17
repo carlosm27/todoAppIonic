@@ -1,0 +1,7 @@
+{
+  "name": "todoAppIonic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
