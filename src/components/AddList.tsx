@@ -19,6 +19,21 @@ export function TaskList() {
 const [name, setName] = useState('');
 const [task, setTask] = useState<any[]>(initialTasks);
 
+function updateList(id:number) {
+  const newArtist = [...task];
+  const artist = newArtist[id];
+  let newName = prompt(`Update ${artist.name}`, artist.name);
+  let artistObj = {id: id, name:newName};
+  newArtist.splice(id, 1, artistObj);
+  if (newName === null || newName === "") {
+    return;
+  } else {
+    artist.name = newName
+  }
+  setTask(newArtist);
+
+};
+
 return (
   <>
     <h1>Task List</h1>
@@ -36,16 +51,19 @@ return (
     <ul>
       {task.map(artist => (
         <li key={artist.id}>{artist.name}{" "}
-        <button onClick={() => {
-            setTask(
-              task.filter(a =>
-                a.id !== artist.id
-              )
-            );
-          }}>
-            Delete
+          <button onClick={() => {
+              setTask(
+                task.filter(a =>
+                  a.id !== artist.id
+                )
+              );
+            }}>
+              Delete
           </button>
-          </li>
+          <button onClick={() => updateList(artist.id)} >
+                  Update
+          </button>
+        </li>
       ))}
     </ul>
   </>
