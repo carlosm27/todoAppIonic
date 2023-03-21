@@ -2,88 +2,54 @@ import React, { useState } from 'react';
 import { IonInput, IonItem, IonLabel, IonList, IonContent } from '@ionic/react';
 import { IonIcon } from '@ionic/react';
 import { addCircle } from 'ionicons/icons';
-import TaskList from './taskList';
 
 
-interface Task {
-  id: number;
-  body: string;
-};
 
-let dummyData = [
-  {"id":0, "body":"Get milk" }, 
-  {"id":1, "body":"Wash car" }, 
-  {"id":2, "body":"Start coding"}
+
+
+let initialTasks = [
+  { id: 0, name: "Get milk" }, 
+  { id: 1, name: "Wash car" }, 
+  { id: 2, name: "Start coding"},
 ];
 
+let nextIndex = 3;
 
-let nextId: number = 3;
+export function TaskList() {
+const [name, setName] = useState('');
+const [task, setTask] = useState<any[]>(initialTasks);
 
-export function AddTask() {
-  const [task, setTask] = useState('');
-  const [taskList, setTaskList] = useState<any[]>([])
-
-
-  return (
-    <IonContent>
-      <IonItem>
-        <input value={task} 
-        onChange={e => setTask((e.target as HTMLInputElement).value)}
-         placeholder="Enter task"/>
-
-        <div className="item-note">
-          <button onClick={() => {
-           setTaskList([
-            ...taskList, {id : nextId++, body: task}
-           ]);
-          }} ion-button ><IonIcon icon={addCircle}></IonIcon></button>
-        </div>
-      </IonItem>
-      <IonList>
-        <IonItem>
-        <ul>
-          {taskList.map(taskList => (
-          <li key={taskList.id}>{taskList.body}{" "}
-          <button onClick={() => {
-            setTaskList(
-              Object.values(taskList).filter((a:any) =>
-              a.id !== taskList.id)
-              );
-          }}>Delete
-          </button>
-          </li>)
-          )}
-        </ul>
-       </IonItem>
-      </IonList>
-      
-    </IonContent>
-
-    
-  );
-}
-
-export function DeleteTask() {
-  const [task, setTask] = useState<any[]>(
-    dummyData
-  );
-
-  return (
+return (
+  <>
+    <h1>Task List</h1>
+    <input
+      value={name}
+      onChange={e => setName(e.target.value)}
+    />
+    <button onClick={() => {
+      setTask([
+          ...task,
+          {id: nextIndex++,
+        name: name}
+      ]);
+    }}>Add</button>
     <ul>
-      {task.map(task => (
-        <li key={task.id}> {task.body}{""}
+      {task.map(artist => (
+        <li key={artist.id}>{artist.name}{" "}
         <button onClick={() => {
-          setTask(
-            Object.values(task).filter((a: any) => 
-            a.id !== task.id
-            )
-          );
-        }}>
-
-        Delete</button>
-
-        </li>
+            setTask(
+              task.filter(a =>
+                a.id !== artist.id
+              )
+            );
+          }}>
+            Delete
+          </button>
+          </li>
       ))}
     </ul>
-  )
+  </>
+);
 }
+
+
