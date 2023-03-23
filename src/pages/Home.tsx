@@ -1,8 +1,7 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Home.css';
-import TaskList from '../components/taskList';
-import AddTask from '../components/AddList';
+import { TaskList}from '../components/Task';
 
 
 
@@ -20,7 +19,7 @@ const Home: React.FC = () => {
             <IonTitle size="large">Blank</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <AddTask/>
+        <TaskList/>
         <ExploreContainer />
       </IonContent>
     </IonPage>
