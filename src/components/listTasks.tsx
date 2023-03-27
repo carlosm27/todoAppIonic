@@ -62,7 +62,7 @@ export default function GetTasks() {
     return (
         <>
           <h1>Task List:</h1>
-          <IonButton routerLink='/createTask'>Add Task</IonButton>
+          <IonButton routerLink='/create'>Add Task</IonButton>
           <table>
             <tr>
               <th>Task</th>
@@ -75,7 +75,7 @@ export default function GetTasks() {
               <tr key={task.id}>
                 <td>{task.task}</td>    
                 <th>{String(task.completed)}</th>
-                <td><IonButton onClick={() => Update(task.id)}>Update</IonButton></td>
+                <td><IonButton routerLink='/home'>Update</IonButton></td>
                 <td><IonButton onClick={()=> DeleteTask(task.id)}>Delete</IonButton></td>  
               </tr>
               
