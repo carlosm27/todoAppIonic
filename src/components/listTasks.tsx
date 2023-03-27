@@ -62,7 +62,7 @@ export default function GetTasks() {
     return (
         <>
           <h1>Task List:</h1>
-          <IonButton routerLink='/create'>Add Task</IonButton>
+          <IonButton routerLink='/createTask'>Add Task</IonButton>
           <table>
             <tr>
               <th>Task</th>
