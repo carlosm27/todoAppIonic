@@ -21,7 +21,7 @@ export default function Tasks() {
 
     return (
         <>
-          <h1>Inspiring sculptors:</h1>
+          <h1>Tasks List:</h1>
           <ul>
             {tasks.map(task => (
               <li key={task.id}>{task.task}{' '}{String(task.completed)} 
