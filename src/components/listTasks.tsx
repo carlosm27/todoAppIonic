@@ -69,8 +69,7 @@ export default function GetTasks() {
               <th>Completed</th>
               <th>Actions</th>
             </tr>
-            
-           
+        
             {todos.map(task => (
               <tr key={task.id}>
                 <td>{task.task}</td>    
